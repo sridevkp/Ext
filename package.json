@@ -1,0 +1,53 @@
+{
+  "name": "terminal-fail-sound",
+  "displayName": "Terminal Fail Sound",
+  "description": "Plays a sound when a terminal command fails (non-zero exit code)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Terminal Fail Sound",
+      "properties": {
+        "terminalFailSound.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the terminal fail sound notification."
+        },
+        "terminalFailSound.soundPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a custom audio file to play on failure. Leave empty to use the built-in sound."
+        },
+        "terminalFailSound.minExitCode": {
+          "type": "number",
+          "default": 1,
+          "minimum": 1,
+          "description": "Minimum exit code considered a failure (default: 1)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.93.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
